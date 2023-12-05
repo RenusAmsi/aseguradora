@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>ISE La Union</title>
+	<link rel="stylesheet" href="./style.css" />
+	<link rel="stylesheet" href="./tablas.css">
+</head>
+<header id="head">
+	<h1>La unión</h1>
+</header>
+<nav>
+	<ul>
+		<li><a href="#cuitForm">Cliente</a></li>
+		<li><a href="#patente">Vehiculo</a></li>
+	</ul>
+</nav>
+<body>
+	<!-- Formulario Cliente Asociado -->
+	<form class="formCliente" name="formCliente" action="" method="POST">
+		<label for="">Cuit/Cuil :
+			<input id="cuitForm" type="text" class="cuit-campo" name="cuit" value="" placeholder="20-12345678-5"
+				pattern="[0-9\-]{13}" onchange="buscarPorCuit()" />
+		</label>
+
+		<label for="">Nombre y apellido :
+			<input type="text" class="nombre-campo" name="nombre" id="nombre" placeholder="nombre" />
+			<input type="text" class="nombre-campo" name="apellido" id="apellido" placeholder="apellido" />
+		</label>
+
+		<label for="">Telefono :
+			<input type="tel" class="tel-campo" name="telefono" id="telefono" placeholder="155980328" />
+		</label>
+
+		<label for="email">Correo Electronico :
+			<input type="email" name="email" id="email" placeholder="ejemplo@correo.com" />
+		</label>
+
+		<!--  Auto -->
+
+		<div class="formAuto">
+			<fieldset class="field">
+				<legend>Patente</legend>
+
+				<label for="patente">
+					Matricula Vehicular
+					<input type="text" name="patente" id="patente" placeholder="ej1: AB 123 DF // ej2: ABC 123" />
+				</label>
+			</fieldset>
+
+			<fieldset class="field">
+				<legend>Tipo</legend>
+
+				<label for="urbano">
+					<input type="radio" name="tipoAuto" id="urbano" value="urbano" checked />
+					Urbano</label>
+				<label for="sedan">
+					<input type="radio" name="tipoAuto" id="sedan" value="sedan" />
+					Sedán</label>
+				<label for="berlina">
+					<input type="radio" name="tipoAuto" id="berlina" value="berlina" />
+					Berlina</label>
+				<label for="hatchback">
+					<input type="radio" name="tipoAuto" id="hatchback" value="hatchback" />
+					Hatchback</label>
+				<label for="suv">
+					<input type="radio" name="tipoAuto" id="suv" value="suv" />
+					SUV</label>
+				<label for="furgoneta">
+					<input type="radio" name="tipoAuto" id="furgoneta" value="furgoneta" />
+					Furgoneta</label>
+				<label for="cupe">
+					<input type="radio" name="tipoAuto" id="cupe" value="cupe" />
+					Cupé</label>
+				<label for="descapotable">
+					<input type="radio" name="tipoAuto" id="descapotable" value="descapotable" />
+					Descapotable</label>
+				<label for="deportivo">
+					<input type="radio" name="tipoAuto" id="deportivo" value="deportivo" />
+					Deportivo</label>
+				<label for="todoTerreno">
+					<input type="radio" name="tipoAuto" id="todoTerreno" value="todoTerreno" />
+					Todo Terreno</label>
+				<label for="monoVolumen">
+					<input type="radio" name="tipoAuto" id="monoVolumen" value="monoVolumen" />
+					Mono Volumen</label>
+
+				<label for="pickup">
+					<input type="radio" name="tipoAuto" id="pickup" value="pickup" />
+					PickUp</label>
+			</fieldset>
+			<fieldset>
+				<label for="anio">Año :
+					<input type="number" name="anio" id="anio-auto" />
+				</label>
+
+				<label for="">Modelo :
+					<select name="marca" id="marca-auto" onchange="cambia_modelo()">
+						<option value="0">Seleccione...</option>
+						<option value="1">Toyota</option>
+						<option value="2">Fiat</option>
+						<option value="3">Renault</option>
+						<option value="4">Volkswagen</option>
+						<option value="5">Peugot</option>
+						<option value="6">Chevrolet</option>
+						<option value="7">Ford</option>
+						<option value="8">Nissan</option>
+						<option value="9">Citroen</option>
+						<option value="10">Jeep</option>
+					</select>
+
+					<select name="modelo" id="modelo-auto">
+						<option value=""></option>
+						<option value=""></option>
+						<option value=""></option>
+						<option value=""></option>
+						<option value=""></option>
+						<option value=""></option>
+						<option value=""></option>
+					</select>
+				</label>
+
+				<label for="gnc">GNC :
+					<input type="checkbox" name="gnc" id="gnc" />
+				</label>
+
+				<label for="descripcion">
+					Descripción :
+					<textarea name="descripcion" id="descripcion" cols="30" rows="5">
+						</textarea>
+				</label>
+			</fieldset>
+		</div>
+
+		<div class="botones">
+			<input type="reset" onclick="" id="btnResetear" />
+			<input type="submit" onclick="" id="btnEnviar" />
+		</div>
+	</form>
+
+	<table>
+		<h2>Cliente</h2>
+		<thead>
+			<tr>
+				<th>Cuit</th>
+				<th>Nombre</th>
+				<th>Telefono</th>
+				<th>Correo</th>
+			</tr>
+		</thead>
+		<tbody id="tabla-clientes"></tbody>
+	</table>
+	<table>
+		<h2>Vehículos</h2>
+		<thead>
+			<tr>
+				<th>Dueño</th>
+				<th>Tipo</th>
+				<th>Año</th>
+				<th>Marca</th>
+				<th>Modelo</th>
+				<th>Matricula</th>
+				<th>Gnc</th>
+				<th>Descripción</th>
+			</tr>
+		</thead>
+		<tbody id="tabla-vehiculos"></tbody>
+	</table>
+
+	<script src="script.js"></script>
+</body>
+<footer>
+	<p>Ismael Suñer Elias - Aseguradora "La Unión" ®</p>
+</footer>
+</html>
